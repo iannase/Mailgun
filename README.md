@@ -8,7 +8,7 @@ In this implementation, we have used 4 different tags, the first is LrgEm##, the
 ![3](https://ianannasetech.files.wordpress.com/2017/11/screen-shot-2017-11-11-at-2-43-40-pm.png)
 
 # Download email addressess that should be removed (failures.py)
-This one gets the email addresses of hard bounces, unsubscribes, and complaints and puts them into excel files so that you can later upload them for deletion.
+This one gets the email addresses of permanent bounces, unsubscribes, and complaints then puts them into excel files so that you can later upload them for deletion.
 
 ![1](https://ianannasetech.files.wordpress.com/2017/11/screen-shot-2017-11-10-at-7-08-36-pm.png)
 

@@ -1,6 +1,6 @@
 # Mailgun
 Python files that use Mailgun's API
-# Get statistics from message tags (mailgun.py)
+# Get statistics from message tags (getStatistics.py)
 In this implementation, we have used 4 different tags, the first is LrgEm##, then LrgEm##a, LrgEm##b, and LrgEm##c. This gets the summation of all these tags and bases the results on those numbers. The user only has to enter the first one (LrgEm##).
 
 ![1](https://ianannasetech.files.wordpress.com/2017/11/screen-shot-2017-11-10-at-3-59-51-pm.png)

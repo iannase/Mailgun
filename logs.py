@@ -148,7 +148,11 @@ for i in tags:
 		# output during download
 		print(t)
 		print()
-		print(str(z-1) + " logs downloaded.")
+		print(str(z-1) + " logs downloaded so far...")
+print()
+print("Success!")
+print(str(z-1) + "logs downloaded!")
+print()
 
 # list sums in the excel file
 logsSheet.write('K1', 'Delivered',bold)

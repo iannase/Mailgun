@@ -42,6 +42,10 @@ while True: # each number in this range gets 10,000 list items
 		print(emailAddress)
 		z+=1
 
+	print()
+	print(str(z) + " bounces downloaded so far..")
+	bouncesDownloaded = z
+
 # api call for complaints
 page = baseURL + "complaints"
 z=0
@@ -62,6 +66,11 @@ while True:
 		print(emailAddress)
 		z+=1
 
+	print()
+	print(str(bouncesDownloaded) + " bounces downloaded.")
+	print(str(z) + " complaints downloaded so far..")
+	complaintsDownloaded = z
+
 # api call for bounces
 page = baseURL + "unsubscribes"
 z=0
@@ -81,6 +90,19 @@ while True:
 		unsubscribesSheet.write(z,0,emailAddress)
 		print(emailAddress)
 		z+=1
+
+	print()
+	print(str(bouncesDownloaded) + " bounces downloaded.")
+	print(str(complaintsDownloaded) + " complaints downloaded.")
+	print(str(z) + " unsubscribes downloaded so far..")
+	unsubscribesDownloaded = z
+
+print()
+print("Success!")
+print()
+print(str(bouncesDownloaded) + " bounces downloaded.")
+print(str(complaintsDownloaded) + " complaints downloaded.")
+print(str(unsubscribesDownloaded) + " complaints downloaded.")
 
 # save workbooks
 bouncesWorkbook.save('bounces.xls')

@@ -68,7 +68,7 @@ for i in tags:
 			client=""
 			os=""
 			device=""
-
+ 
 			# next page URL
 			page = data['paging']['next']
 

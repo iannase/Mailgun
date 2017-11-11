@@ -138,10 +138,6 @@ for i in tags:
 		print
 		print(str(z-1) + " logs downloaded.")
 
-# open and click through rates
-openRate = round(openedSum/deliveredSum*100,2)
-clickThroughRate = round(clickedSum/openedSum*100,2)
-
 # list sums in the excel file
 logsSheet.write('J1', 'Delivered',bold)
 logsSheet.write('K1', 'Opened',bold)
@@ -151,10 +147,6 @@ logsSheet.write('J2', deliveredSum)
 logsSheet.write('K2', openedSum)
 logsSheet.write('L2', clickedSum)
 logsSheet.write('M2', failedSum)
-logsSheet.write('J4', "Open Rate",bold)
-logsSheet.write('M4', "Click Through Rate",bold)
-logsSheet.write('J5', str(openRate)+"%")
-logsSheet.write('M5', str(clickThroughRate)+"%")
 
 # close the workbook
 logsWorkbook.close()

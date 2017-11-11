@@ -18,12 +18,23 @@ bouncesSheet = bouncesWorkbook.add_sheet('Bounces')
 complaintsSheet = complaintsWorkbook.add_sheet('Complaints')
 unsubscribesSheet = unsubscribesWorkbook.add_sheet('Unsubscribes')
 
+print()
+print("Loading...")
+print()
+
 # api call for bounces
 page = baseURL + "bounces"
 z=0
-for i in range(5): # each number in this range gets 10,000 list items
+while True: # each number in this range gets 10,000 list items
+	# api call
 	request = requests.get(page, auth=("api", key), params={"limit": 10000})
 	data = request.json()
+
+	# break the loop if there's no data left
+	if len(data['items']) == 0:
+		break
+
+		# append and print email address
 	for j in range(len(data['items'])):
 		page = data['paging']['next']
 		emailAddress=data['items'][j]['address']
@@ -34,9 +45,16 @@ for i in range(5): # each number in this range gets 10,000 list items
 # api call for complaints
 page = baseURL + "complaints"
 z=0
-for i in range(5): # each number in this range gets 10,000 list items
+while True:
+	# api call
 	request = requests.get(page, auth=("api", key), params={"limit": 10000})
 	data = request.json()
+
+	# break the loop if there's no data left
+	if len(data['items']) == 0:
+		break
+
+	# append and print email address
 	for j in range(len(data['items'])):
 		page = data['paging']['next']
 		emailAddress=data['items'][j]['address']
@@ -47,9 +65,16 @@ for i in range(5): # each number in this range gets 10,000 list items
 # api call for bounces
 page = baseURL + "unsubscribes"
 z=0
-for i in range(5): # each number in this range gets 10,000 list items
+while True:
+	# api call
 	request = requests.get(page, auth=("api", key), params={"limit": 10000})
 	data = request.json()
+
+	# break the loop if there's no data left
+	if len(data['items']) == 0:
+		break
+
+	# append and print email address
 	for j in range(len(data['items'])):
 		page = data['paging']['next']
 		emailAddress=data['items'][j]['address']

@@ -1,6 +1,6 @@
 # Created by Ian Annase on 11/11/2017
 
-from xlwt import Workbook
+import xlsxwriter
 import json
 import requests
 

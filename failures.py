@@ -9,14 +9,14 @@ key="YOUR_KEY"
 baseURL="https://api.mailgun.net/v3/YOUR_DOMAIN/"
 
 # excel workbooks
-bouncesWorkbook = Workbook()
-complaintsWorkbook = Workbook()
-unsubscribesWorkbook = Workbook()
+bouncesWorkbook = xlsxwriter.Workbook('bounces.xlsx')
+complaintsWorkbook = xlsxwriter.Workbook('complaints.xlsx')
+unsubscribesWorkbook = xlsxwriter.Workbook('unsubscribes.xlsx')
 
 # sheets
-bouncesSheet = bouncesWorkbook.add_sheet('Bounces')
-complaintsSheet = complaintsWorkbook.add_sheet('Complaints')
-unsubscribesSheet = unsubscribesWorkbook.add_sheet('Unsubscribes')
+bouncesSheet = bouncesWorkbook.add_worksheet()
+complaintsSheet = complaintsWorkbook.add_worksheet()
+unsubscribesSheet = unsubscribesWorkbook.add_worksheet()
 
 print()
 print("Loading...")
@@ -105,6 +105,6 @@ print(str(complaintsDownloaded) + " complaints downloaded.")
 print(str(unsubscribesDownloaded) + " complaints downloaded.")
 
 # save workbooks
-bouncesWorkbook.save('bounces.xls')
-complaintsWorkbook.save('complaints.xls')
-unsubscribesWorkbook.save('unsubscribes.xls')
+bouncesWorkbook.close()
+complaintsWorkbook.close()
+unsubscribesWorkbook.close()

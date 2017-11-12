@@ -102,7 +102,7 @@ print("Success!")
 print()
 print(str(bouncesDownloaded) + " bounces downloaded.")
 print(str(complaintsDownloaded) + " complaints downloaded.")
-print(str(unsubscribesDownloaded) + " complaints downloaded.")
+print(str(unsubscribesDownloaded) + " unsubscribes downloaded.")
 
 # save workbooks
 bouncesWorkbook.close()

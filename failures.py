@@ -9,9 +9,9 @@ key="YOUR_KEY"
 baseURL="https://api.mailgun.net/v3/YOUR_DOMAIN/"
 
 # excel workbooks
-bouncesWorkbook = xlsxwriter.Workbook('bounces.xlsx')
-complaintsWorkbook = xlsxwriter.Workbook('complaints.xlsx')
-unsubscribesWorkbook = xlsxwriter.Workbook('unsubscribes.xlsx')
+bouncesWorkbook = xlsxwriter.Workbook('./results/bounces.xlsx')
+complaintsWorkbook = xlsxwriter.Workbook('./results/complaints.xlsx')
+unsubscribesWorkbook = xlsxwriter.Workbook('./results/unsubscribes.xlsx')
 
 # sheets
 bouncesSheet = bouncesWorkbook.add_worksheet()

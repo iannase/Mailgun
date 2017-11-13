@@ -19,6 +19,10 @@ for z in range(10):
 	tagB = tag + "b"
 	tagC = tag + "c"
 
+	# create file
+	filename = "./results/"+tag+" statistics.txt"
+	f = open(filename,"w")
+
 	# array of tags
 	tags = [tag,tagA,tagB,tagC]
 
@@ -145,6 +149,9 @@ for z in range(10):
 		print(t)
 		print()
 
+		f.write(i+"\n")
+		f.write(str(t)+"\n\n")
+
 	# get mobile / desktop data
 	for i in tags:
 
@@ -226,7 +233,6 @@ for z in range(10):
 	formattedTime = datetime.datetime.fromtimestamp(time).strftime('%m/%d/%Y %H:%M')
 
 	# print results
-	print()
 	print("Rates")
 	t = PrettyTable(['Rate', '%'])
 	openRateString = str(openRate) + "%"
@@ -239,6 +245,9 @@ for z in range(10):
 	t.add_row(['Unique CTR',uniqueClickThroughRateString])
 	print(t)
 	print()
+
+	f.write("Rates\n")
+	f.write(str(t)+"\n\n")
 
 	print("Devices")
 	t = PrettyTable(['Device', '% of deliveries', 'CTR'])
@@ -254,6 +263,9 @@ for z in range(10):
 	print(t)
 	print()
 
+	f.write("Devices\n")
+	f.write(str(t)+"\n\n")
+
 	print('Failures / Bounces')
 	t = PrettyTable(['Event', '#'])
 	t.add_row(['Failures',failuresSum])
@@ -264,6 +276,9 @@ for z in range(10):
 	t.add_row(['Temp Complaints',originalComplainsSum])
 	print(t)
 	print()
+
+	f.write("Totals\n")
+	f.write(str(t)+"\n\n")
 
 	print("Totals")
 	t = PrettyTable(['Event', '#'])
@@ -276,16 +291,37 @@ for z in range(10):
 	print(t)
 	print()
 
-	print("========== " + "Message Info / Summary" + " ==========")
-	print("From: " + fromName)
-	print("Subject: " + subject)
-	print("Date: " + formattedTime)
-	print()
+	f.write("Totals\n")
+	f.write(str(t)+"\n\n")
 
-	print("From the messages tagged with " + tag + " we successfully delivered " + str(deliveredSum) + " emails.") 
-	print("This mailgun message had an open rate of " + str(uniqueOpenRate) + "% and a CTR of " + str(uniqueClickThroughRate) + "%.") 
-	print("There was a bounce rate of " + str(bounceRate) + "%.")
+	output1="========== " + "Message Info / Summary" + " =========="
+	output2="From: " + fromName
+	output3="Subject: " + subject
+	output4="Date: " + formattedTime
+	output5="From the messages tagged with " + tag + " we successfully delivered " + str(deliveredSum) + " emails."
+	output6="This mailgun message had an open rate of " + str(uniqueOpenRate) + "% and a CTR of " + str(uniqueClickThroughRate) + "%."
+	output7="There was a bounce rate of " + str(bounceRate) + "%."
+
+	print(output1)
+	print(output2)
+	print(output3)
+	print(output4)
 	print()
+	print(output5) 
+	print(output6)
+	print(output7) 
+
+	f.write(output1+"\n")
+	f.write(output2+"\n")
+	f.write(output3+"\n")
+	f.write(output4+"\n\n")
+	f.write(output5+"\n")
+	f.write(output6+"\n")
+	f.write(output7+"\n")
+
+
+	# close file
+	f.close()
 
 	# restart?
 	again = input("Again? (y/n): ")
@@ -297,6 +333,7 @@ for z in range(10):
 print()
 print("Goodbye!")
 print()
+
 
 # use this code to dump JSON data to console
 # print(json.dumps(data, indent=2))

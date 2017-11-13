@@ -15,6 +15,11 @@ openedSum=0
 clickedSum=0
 deliveredSum=0
 failedSum=0
+firstTagSum=0
+secondTagSum=0
+thirdTagSum=0
+fourthTagSum=0
+logNum=0
 
 # tags
 tag = input("Please enter a tag: ")
@@ -23,8 +28,11 @@ tagB = tag + "b"
 tagC = tag + "c"
 tags = [tag,tagA,tagB,tagC]
 
+logType = input("What type of email was this? (Legislative Connection/Top Story): ")
+date = input("What date did it go out? Use the format 11.07.2017: ")
+
 # open excel workbooks
-logsWorkbook = xlsxwriter.Workbook('Consolidated Logs ' + tag + '.xlsx')
+logsWorkbook = xlsxwriter.Workbook('./results/Consolidated Logs ' + logType + ' ' + tag + ' ' + date + '.xlsx')
 
 # add a sheet
 logsSheet = logsWorkbook.add_worksheet()
@@ -49,6 +57,8 @@ for i in tags:
 	# original URL
 	page = baseURL + "events"
 
+	zz=0
+
 	while lastPage: # each number in this range gets 300 list items
 		#table format
 		t = PrettyTable(['Tag', 'Event', 'Email', 'City', 'OS', 'Device', 'Date'])
@@ -58,8 +68,27 @@ for i in tags:
 		data = request.json()
 
 		# exit loop if it's the page
-		if len(data['items']) == 0:
+		if len(data['items']) == 0 and logNum == 0:
 			lastPage = False
+			firstTagSum = str(zz)
+			logNum+=1
+			continue
+
+		if len(data['items']) == 0 and logNum == 1:
+			lastPage = False
+			secondTagSum = str(zz)
+			logNum+=1
+			continue
+
+		if len(data['items']) == 0 and logNum == 2:
+			lastPage = False
+			thirdTagSum = str(zz)
+			logNum+=1
+			continue
+
+		if len(data['items']) == 0 and logNum == 3:
+			lastPage = False
+			fourthTagSum = str(zz)
 			continue
 
 		for j in range(len(data['items'])):
@@ -144,14 +173,36 @@ for i in tags:
 			logsSheet.write(z,7,device)
 			logsSheet.write(z,8,formattedTime)
 			z+=1
+			zz+=1
 
 		# output during download
 		print(t)
 		print()
-		print(str(z-1) + " logs downloaded so far...")
+		if logNum == 0:
+			print(tags[0] + ": " + str(zz) + " logs downloaded so far...")
+		if logNum == 1:
+			print(tags[0] + ": " + firstTagSum + " logs downloaded.")
+			print(tags[1] + ": " + str(zz) + " logs downloaded so far...")
+		if logNum == 2:
+			print(tags[0] + ": " + firstTagSum + " logs downloaded.")
+			print(tags[1] + ": " + secondTagSum + " logs downloaded.")
+			print(tags[2] + ": " + str(zz) + " logs downloaded so far...")
+		if logNum == 3:
+			print(tags[0] + ": " + firstTagSum + " logs downloaded.")
+			print(tags[1] + ": " + secondTagSum + " logs downloaded.")
+			print(tags[2] + ": " + thirdTagSum + " logs downloaded.")
+			print(tags[3] + ": " + str(zz) + " logs downloaded so far...")
+
+
+print()
+print("Results: ")
+print(tags[0] + ": " + firstTagSum + " logs downloaded.")
+print(tags[1] + ": " + secondTagSum + " logs downloaded.")
+print(tags[2] + ": " + thirdTagSum + " logs downloaded.")
+print(tags[3] + ": " + fourthTagSum + " logs downloaded.")
 print()
 print("Success!")
-print(str(z-1) + "logs downloaded!")
+print(str(z-1) + " logs downloaded!")
 print()
 
 # list sums in the excel file

@@ -2,7 +2,7 @@
 Python files that use Mailgun's API
 
 # How to Install
-1. [Download and install Python 3](http://python.org/downloads) (make sure to include it in PATH when it prompts you during installation)
+1. [Download and install Python 3.6+](http://python.org/downloads) (make sure to include it in PATH when it prompts you during installation)
 2. Open the command prompt (cmd) from the start menu
 3. Inside of cmd, type:
 ```

@@ -1,5 +1,25 @@
 # Mailgun
 Python files that use Mailgun's API
+
+# How to Install
+1. Download and install Python 3 (http://python.org/downloads)
+2. Open the command prompt (cmd) and type "python"
+3. Type this:
+```
+import pip
+```
+4. Then exit python
+```
+exit()
+```
+5. Inside of cmd, type these three commands:
+```
+pip install requests
+pip install prettytable
+pip install xlsxwriter
+```
+6. Download the zip file from GitHub, you should now be able to double click the python files in order to run them.
+
 # Get statistics from message tags (statistics.py)
 In this implementation, we have used 4 different tags, the first is LrgEm##, then LrgEm##a, LrgEm##b, and LrgEm##c. This gets the summation of all these tags and bases the results on those numbers. The user only has to enter the first one (LrgEm##).
 
